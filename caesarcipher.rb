@@ -1,14 +1,14 @@
 #This is a basic caesar cipher. Only letters [A-Za-z] are affected. I added a decrypt function, but it requires that the user knows the value of the shift to perform the decryption.
 
 class CaesarCipher
-  
+
   attr :string, :shift
 
   def initialize(string, shift=1)
     @string = string
     @shift = shift
     @uppercase = *("A".."Z")
-    @lowercase = *("A".."Z")
+    @lowercase = *("a".."z")
   end
 
   def encrypt
@@ -38,15 +38,15 @@ class CaesarCipher
   end
 
   def load_encryptors
-    @uppercase_encryptor = Hash[@@uppercase.zip(@@uppercase.rotate(shift))]
-    @lowercase_encryptor = Hash[@@lowercase.zip(@@lowercase.rotate(shift))]
+    @uppercase_encryptor = Hash[@uppercase.zip(@uppercase.rotate(shift))]
+    @lowercase_encryptor = Hash[@lowercase.zip(@lowercase.rotate(shift))]
   end
 
   def load_decryptors
-    @uppercase_decryptor = Hash[@@uppercase.zip(@@uppercase.rotate(-shift))]
-    @lowercase_decryptor = Hash[@@lowercase.zip(@@lowercase.rotate(-shift))]
+    @uppercase_decryptor = Hash[@uppercase.zip(@uppercase.rotate(-shift))]
+    @lowercase_decryptor = Hash[@lowercase.zip(@lowercase.rotate(-shift))]
   end
 
   private :load_encryptors, :load_decryptors
-  
+
 end
