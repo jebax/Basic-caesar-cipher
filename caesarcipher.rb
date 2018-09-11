@@ -47,6 +47,6 @@ class CaesarCipher
     @lowercase_decryptor = Hash[@@lowercase.zip(@@lowercase.rotate(-shift))]
   end
 
-  private_method_name :load_encryptors, :load_decryptors
+  private :load_encryptors, :load_decryptors
   
 end
